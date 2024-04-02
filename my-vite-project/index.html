@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,8 +6,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
+
+  <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <div class="move">
+      <text>move</text>
+      <button>sdfgsdhj</button>
+    </div>
+
+    <section style="overflow: hidden">
+      <div class="blob-content">
+        <h1>Hi, my name is Álvaro!</h1>
+        <button class="btn-1">Get Started!</button>
+      </div>
+
+      <svg
+        class="blob-motion"
+        id="visual"
+        viewBox="0 0 900 300"
+        width="900"
+        height="300"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+      >
+        <g transform="translate(442.57253278999735 154.3332258427357)">
+          <path
+            id="blob1"
+            d="M94.4 -85C118 -70.7 130 -35.4 121.2 -8.8C112.3 17.7 82.7 35.4 59 49.9C35.4 64.4 17.7 75.7 -5.8 81.5C-29.2 87.2 -58.5 87.5 -78.6 73C-98.8 58.5 -109.9 29.2 -109.2 0.7C-108.5 -27.8 -96 -55.6 -75.8 -70C-55.6 -84.3 -27.8 -85.1 3.8 -88.9C35.4 -92.7 70.7 -99.4 94.4 -85"
+            fill="#f05f67"
+          ></path>
+        </g>
+        <g
+          transform="translate(458.54029462135657 161.09884055143002)"
+          style="visibility: hidden"
+        >
+          <path
+            id="blob2"
+            d="M54.9 -53.4C74.4 -35.4 95.7 -17.7 100.5 4.8C105.3 27.3 93.7 54.7 74.2 68.8C54.7 83 27.3 84 4.5 79.5C-18.4 75.1 -36.8 65.1 -58.9 50.9C-81.1 36.8 -107.1 18.4 -115.5 -8.5C-124 -35.4 -115 -70.7 -92.9 -88.7C-70.7 -106.7 -35.4 -107.4 -8.8 -98.5C17.7 -89.7 35.4 -71.4 54.9 -53.4"
+            fill="#f05f67"
+          ></path>
+        </g>
+      </svg>
+      <script>
+        const tween = KUTE.fromTo(
+          "#blob1",
+          { path: "#blob1" },
+          { path: "#blob2" },
+          { repeat: 999, duration: 3000, yoyo: true }
+        );
+        tween.start();
+      </script>
+    </section>
+    <div class="spacer layer2"></div>
   </body>
+
+  <style>
+    .move {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .move > * {
+      margin: 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 16px;
+    }
+    .move button {
+      margin-top: 30px;
+    }
+
+    h1 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    body {
+      margin: 0;
+      font-family: "Prompt", sans-serif;
+      color: white;
+      background: #202731;
+      overflow-x: hidden;
+    }
+
+    section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 400px;
+      padding-top: 100px;
+    }
+    .spacer {
+      aspect-ratio: 960/300;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      position: absolute;
+    }
+
+    .layer1 {
+      background-image: url("./test1.svg");
+    }
+    .layer2 {
+      background-image: url("./test2.svg");
+    }
+
+    .flip {
+      transform: rotate(180deg);
+    }
+    .blob-motion {
+      position: absolute;
+      transform: translateY(-20%);
+      z-index: 0;
+    }
+
+    .blob-content {
+      z-index: 1;
+    }
+
+    .blobs {
+      width: 100%;
+      background: url("./blobs.svg") no-repeat bottom / cover;
+    }
+
+    .btn-1 {
+      transition: 0.25s;
+      background: none;
+      border: 2px solid;
+      font: inherit;
+      line-height: 1;
+      margin: 0.5em;
+      padding: 1em 2em;
+      color: #ff7f82;
+      &:hover,
+      &:focus {
+        border-color: adjust-hue(#ff7f82, 45deg);
+        box-shadow: 0 0.5em 0.5em -0.4em adjust-hue(#ff7f82, 45deg);
+        transform: translateY(-0.25em);
+        color: #fff;
+      }
+    }
+  </style>
 </html>
